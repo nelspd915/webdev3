@@ -94,8 +94,9 @@ request.then(function(values){
         var html = "<h4>Precinct: "+pctName+"</h4>"+
             "<table><tr><td>Democratic votes: </td><td>"+demVote+"</td></tr>"+
             "<tr><td>Republican votes: </td><td>"+repVote+"</td></tr>"+
-            "<tr><td>Tomfoolery: </td><td>"+balderdash+"</td></tr>"+
-            "<tr><td>Third party votes: </td><td>"+(totalVote-demVote-repVote)+"</td></tr></table>";
+            //"<tr><td>Tomfoolery: </td><td>"+balderdash+"</td></tr>"+
+            "<tr><td>Third party votes: </td><td>"+(totalVote-demVote-repVote)+"</td></tr>"+
+            "<tr><td>Total votes: </td><td>"+totalVote+"</td></tr></table>";
 
         return html;
 		}).addTo(map);
