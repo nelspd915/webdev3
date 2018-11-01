@@ -36,6 +36,12 @@ request.then(function(values){
             var thirdPartyVote = (totalVote - demVote - repVote);
             var thirdPartyPct = Math.round(thirdPartyVote/totalVote*100);
             
+            // Total votes for Democrat or Republican (excludes 3rd party for this symbology)
+            var twoPartyVote = demVote + repVote;
+            
+            // Percent votes for Democrats vs Republicans
+            var demVsRepPerc = Math.round(demVote/twoPartyVote*100);
+            
             // console.log('demVote:', demVote);
             // console.log('repVote:', repVote);
             // console.log('totalVote:', totalVote);
@@ -45,17 +51,29 @@ request.then(function(values){
             // assign colors from the ColorBrewer yellow-green scale
             var fill;
             // equal interval classification
-            // 7% or less
-            if (thirdPartyPct <= 7) {
-                fill = '#f7fcb9';
+            // 70% or more Republican
+            if (demVsRepPerc <= 30) {
+                fill = '#ca0020';
             }
-            // 11% or less
-            else if (thirdPartyPct <= 11) {
-                fill = '#addd8e';
+            
+            // 70-60% Republican
+            else if (demVsRepPerc <= 40) {
+                fill = '#f4a582';
             }
-            // 12% or more
+            
+            // Within 40-60% split
+            else if (demVsRepPerc <= 60) {
+                fill = '#f7f7f7';
+            }
+            
+            // 70-60% Democrat
+            else if (demVsRepPerc <= 70) {
+                fill = '#92c5de';
+            }
+            
+            // 70% or more Democrat
             else {
-                fill = '#31a354';
+                fill = '#0571b0';
             }
             
             // FIXME: remove existing symbolization and create a diverging
