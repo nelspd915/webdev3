@@ -48,6 +48,12 @@ request.then(function(values){
             // console.log('thirdPartyVote:', thirdPartyVote);
             // console.log('pct3rd:', thirdPartyPct);
             
+            // FIXME: remove existing symbolization and create a diverging
+            // symbology based the democrat or republic vote as a percent
+            // of the total vote.
+            // Use Colorbrewer's 5-class Red-Blue colors for this
+            // http://colorbrewer2.org/#type=diverging&scheme=RdBu&n=5
+            
             // assign colors from the ColorBrewer yellow-green scale
             var fill;
             // equal interval classification
@@ -75,12 +81,6 @@ request.then(function(values){
             else {
                 fill = '#0571b0';
             }
-            
-            // FIXME: remove existing symbolization and create a diverging
-            // symbology based the democrat or republic vote as a percent
-            // of the total vote.
-            // Use Colorbrewer's 5-class Red-Blue colors for this
-            // http://colorbrewer2.org/#type=diverging&scheme=RdBu&n=5
             
             // return style specification
             return {
